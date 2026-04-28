@@ -1,6 +1,8 @@
+<p>Official <a href="https://trmnl.com">TRMNL site</a></p>
 <h4>TRMNL sources</h4>
 <h1>When is the next Apple event</h1>
-<p>Sources are from my private copy.</p>
+<p>Inspired by <a href="https://wheniskeynote.com">Wheniskeynote.com</a></p>
+<p>Sources are from my private version of this <a href="https://trmnl.com/recipes/287989">public TRMNL recipe.</a></p>
 <img src="https://github.com/spravodaj/TRMNL-When-Is-Keynote/blob/main/screenshot.png" />
 <h4>JSON file format</h4>
 <code>
