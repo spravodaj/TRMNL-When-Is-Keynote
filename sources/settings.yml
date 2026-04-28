@@ -1,0 +1,14 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: "{\r\n    \"created\": \"When is Keynote : TRMNL JSON data\",\r\n    \"success\": true,\r\n    \"source\": \"http://wheniskeynote.com/js/addNewEvent.js\",\r\n    \"fetched_at\": \"2026-04-16T22:36:28+02:00\",\r\n    \"keynote\": {\r\n        \"timezone\": \"'EST'\",\r\n        \"year\": \"2026\",\r\n        \"month\": \"06\",\r\n        \"day\": \"08\",\r\n        \"hour\": \"09\",\r\n        \"minute\": \"00\",\r\n        \"eventdate\": \"08. 06. 2026\",\r\n        \"eventhour\": \"09.00\",\r\n        \"formatdate\": \"08.&thinsp;06.&thinsp;2026\",\r\n        \"formathour\": \"09<sup>00</sup>\",\r\n        \"internationaldate\": \"2026-06-08T09:00:00-05:00\",\r\n        \"event_name\": \"WWDC26\"\r\n    }\r\n}"
+polling_verb: get
+framework_version: 3.0.3
+serverless_language: ''
+polling_url: https://www.madaj.net/system/wak/when.php
+polling_headers: ''
+polling_body: ''
+id: 282385
+name: When is the next Apple keynote? [private]
+refresh_interval: 1440

@@ -1,0 +1,63 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lexend:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<style>
+  .counteverest { 
+    background-image: linear-gradient(to bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%); 
+  background-color: #000;
+  background-image: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          color-stop(0.25, #060709),
+          color-stop(0.5, #212328),
+          color-stop(0.75, #424448),
+          color-stop(1, #686A6D)
+  );
+  background-image: -o-linear-gradient(bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%);
+  background-image: -moz-linear-gradient(bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%);
+  background-image: -webkit-linear-gradient(bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%);
+  background-image: -ms-linear-gradient(bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%);
+  background-image: linear-gradient(to bottom, #060709 25%, #212328 50%, #424448 75%, #686A6D 100%);  
+  }
+  #wak .font { font-family: "Noto Sans", sans-serif; }
+  #wak h1.font { font-weight: 300; font-size: 3.5em; }
+  #wak p.font { font-weight: 600; font-size: 1.2em; }
+  #wak .spacenone { margin:0; padding: 0; }
+  #wak .spacetop { margin-bottom: 0; padding-bottom: 0; }
+  #wak .spacebottom { margin-top: 0; padding-top: 0; }
+  #wak.wakquarter h1.font { font-size: 1.8em; }
+  #wak.wakquarter p.font { font-size: 1em; }
+  #wak .bold { font-weight: 600; }
+  #wak sup, #wak sub {
+    font-size: 0.6em;
+  vertical-align: baseline;
+  position: relative; 
+  top: calc(-0.36 * 0.83 * 2 * (1em - 4px)); 
+  }
+#wak sub {
+  top: calc(0.25 * 0.83 * 2 * (1em - 4px)); 
+  /* Simplified top: calc(0.42em - 1.66px) */
+}  
+</style>
+
+    {% assign timestamp = trmnl.system.timestamp_utc %}
+    {% assign local_timestamp = timestamp | plus: trmnl.user.utc_offset %}
+
+{% assign now    = trmnl.system.timestamp_utc %}
+{% assign target = keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset  %}
+{% assign diff   = target | minus: now %}
+
+{% if diff > 0 %}
+
+  {% assign days                 = diff        | divided_by: 86400 %}
+  {% assign remaining_after_days = diff        | modulo:     86400 %}
+
+  {% assign hours                = remaining_after_days | divided_by: 3600 %}
+  {% assign remaining_after_hours= remaining_after_days | modulo:     3600 %}
+
+  {% assign minutes              = remaining_after_hours | divided_by: 60  %}
+  {% assign seconds              = remaining_after_hours | modulo:     60  %}
+
+{%- endif -%}

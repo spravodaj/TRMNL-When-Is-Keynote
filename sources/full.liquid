@@ -1,0 +1,51 @@
+<style>
+  .screen, .view {
+  background-color: #000;
+  }
+</style>
+<div id="wak" class="layout layout--col layout--center m--0 bg--black gap--none">
+
+ <div class="flex flex--col w--full xh--full flex--content-center flex--center-x xg--black gap--none">
+  <p class="font text--white spacetop">The next Apple keynote address / product event is:</p>
+  <h1 class="font text--white spacebottom m--3">{{ keynote.event_name }}</h1>
+  <p class="font text--white spacetop">this event will be held on:</p>  
+  <!-- <h1 class="font text--white spacebottom">{{ keynote.formatdate }} at {{ keynote.formathour }} {{ keynote.timezone }}</h1> -->
+   {% assign stamp = keynote.internationaldate | date: "%s" | plus: 0 %}
+   {% assign user = stamp %}
+  <h1 class="font text--white spacebottom">
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%A, %B %d" }}
+at
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%H<sup>%M</sup>" }}   </h1>
+ </div>
+ <div class="box pt--3 mt--3">
+  <p class="font text--white spacetop">Time remaining:</p>
+ </div>
+ <div class="flex flex--row w--full flex--content-center flex--center-x gap--none">
+  <div class="box px--6 text--center"> 
+   {% if days >= 1 %}
+   <h1 class="font text--white">{{ days }}</h1>
+    {% if days == 1 %}
+     <p class="font text--white">day</p>
+    {% else %}
+     <p class="font text--white">days</p>
+    {% endif %}
+   {% endif %}
+  </div>
+  <div class="box px--6 text--center"> 
+   <h1 class="font text--white">{{ hours }}</h1>
+    {% if hours == 1 %}
+     <p class="font text--white">hour</p>
+    {% else %}
+     <p class="font text--white">hours</p>
+    {% endif %}
+  </div>
+  <div class="box px--6 text--center"> 
+   <h1 class="font text--white">{{ minutes }}</h1>
+    {% if minutes == 1 %}
+     <p class="font text--white">minute</p>
+    {% else %}
+     <p class="font text--white">minutes</p>
+    {% endif %}
+  </div>
+ </div>
+</div>

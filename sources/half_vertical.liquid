@@ -1,0 +1,45 @@
+<div id="wak" class="layout layout--col layout--center m--0 bg--white wakquarter">
+
+ <div class="flex flex--col w--full xh--full flex--content-center flex--center-x gap--none">
+  <img class="image m--2 w--12" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI4MTQiIGhlaWdodD0iMTAwMCI+DQogIDxwYXRoIGZpbGw9IiM5ZDlkOWMiIGQ9Ik03ODguMSAzNDAuOWMtNS44IDQuNS0xMDguMiA2Mi4yLTEwOC4yIDE5MC41IDAgMTQ4LjQgMTMwLjMgMjAwLjkgMTM0LjIgMjAyLjItLjYgMy4yLTIwLjcgNzEuOS02OC43IDE0MS45LTQyLjggNjEuNi04Ny41IDEyMy4xLTE1NS41IDEyMy4xcy04NS41LTM5LjUtMTY0LTM5LjVjLTc2LjUgMC0xMDMuNyA0MC44LTE2NS45IDQwLjhzLTEwNS42LTU3LTE1NS41LTEyN0M0Ni43IDc5MC43IDAgNjYzIDAgNTQxLjhjMC0xOTQuNCAxMjYuNC0yOTcuNSAyNTAuOC0yOTcuNSA2Ni4xIDAgMTIxLjIgNDMuNCAxNjIuNyA0My40IDM5LjUgMCAxMDEuMS00NiAxNzYuMy00NiAyOC41IDAgMTMwLjkgMi42IDE5OC4zIDk5LjJ6bS0yMzQtMTgxLjVjMzEuMS0zNi45IDUzLjEtODguMSA1My4xLTEzOS4zIDAtNy4xLS42LTE0LjMtMS45LTIwLjEtNTAuNiAxLjktMTEwLjggMzMuNy0xNDcuMSA3NS44LTI4LjUgMzIuNC01NS4xIDgzLjYtNTUuMSAxMzUuNSAwIDcuOCAxLjMgMTUuNiAxLjkgMTguMSAzLjIuNiA4LjQgMS4zIDEzLjYgMS4zIDQ1LjQgMCAxMDIuNS0zMC40IDEzNS41LTcxLjN6Ii8+DQo8L3N2Zz4=">
+  <p class="font spacetop">The next Apple keynote:</p>
+  <h1 class="font spacebottom m--3">{{ keynote.event_name }}</h1>
+  <p class="font spacetop">this event will be held on:</p>  
+  <h1 class="font spacebottom m--3">
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%A, %B %d" }}
+at
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%H<sup>%M</sup>" }}  </h1> 
+ </div>
+ <div class="box pt--3 mt--3">
+  <p class="font spacetop">Time remaining:</p>
+ </div>
+ <div class="flex flex--row w--full flex--content-center flex--center-x gap--none">
+  <div class="box px--6 text--center"> 
+   {% if days >= 1 %}
+   <h1 class="font">{{ days }}</h1>
+    {% if days == 1 %}
+     <p class="font">day</p>
+    {% else %}
+     <p class="font">days</p>
+    {% endif %}
+   {% endif %}
+  </div>
+  <div class="box px--6 text--center"> 
+   <h1 class="font">{{ hours }}</h1>
+    {% if hours == 1 %}
+     <p class="font">hour</p>
+    {% else %}
+     <p class="font">hours</p>
+    {% endif %}
+  </div>
+  <div class="box px--6 text--center"> 
+   <h1 class="font">{{ minutes }}</h1>
+    {% if minutes == 1 %}
+     <p class="font">minute</p>
+    {% else %}
+     <p class="font">minutes</p>
+    {% endif %}
+  </div>
+ </div>
+  
+</div>

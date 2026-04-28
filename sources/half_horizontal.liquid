@@ -1,0 +1,12 @@
+<div id="wak" class="layout layout--col layout--center m--0 bg--white wakquarter">
+
+ <div class="flex flex--col w--full xh--full flex--content-center flex--center-x gap--none">
+  <p class="font spacetop">The next Apple keynote:</p>
+  <h1 class="font spacebottom m--3">{{ keynote.event_name }}</h1>
+  <p class="font spacetop">this event will be held on:</p>  
+  <h1 class="font spacebottom m--3">
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%A, %B %d" }}
+at
+{{ keynote.internationaldate | date: "%s" | plus: trmnl.user.utc_offset | date: "%H<sup>%M</sup>" }}  </h1> 
+ </div>
+</div>
