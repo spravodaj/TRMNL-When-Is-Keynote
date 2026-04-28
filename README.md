@@ -1,6 +1,6 @@
 <h4>TRMNL sources</h4>
 <h1>When is the next Apple event</h1>
-<p>...</p>
+<p>Sources are from my private copy.</p>
 <h4>JSON file format</h4>
 <code>
   {
