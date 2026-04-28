@@ -1,6 +1,7 @@
 <h4>TRMNL sources</h4>
 <h1>When is the next Apple event</h1>
 <p>Sources are from my private copy.</p>
+<img src="https://github.com/spravodaj/TRMNL-When-Is-Keynote/blob/main/screenshot.png" />
 <h4>JSON file format</h4>
 <code>
   {
