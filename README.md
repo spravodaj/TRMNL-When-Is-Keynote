@@ -1,3 +1,26 @@
 <h4>TRMNL sources</h4>
 <h1>When is the next Apple event</h1>
 <p>...</p>
+<h4>JSON file format</h4>
+<code>
+  {
+    "created": "When is Keynote : TRMNL JSON data",
+    "success": true,
+    "source": "http://wheniskeynote.com/js/addNewEvent.js",
+    "fetched_at": "2026-04-28T13:06:35+02:00",
+    "keynote": {
+        "timezone": "'EST'",
+        "year": "2026",
+        "month": "06",
+        "day": "08",
+        "hour": "09",
+        "minute": "00",
+        "eventdate": "08. 06. 2026",
+        "eventhour": "09.00",
+        "formatdate": "08.&thinsp;06.&thinsp;2026",
+        "formathour": "09<sup>00</sup>",
+        "internationaldate": "2026-06-08T09:00:00-05:00",
+        "event_name": "WWDC26"
+    }
+}
+</code>
