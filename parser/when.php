@@ -194,6 +194,21 @@ function buildIsoDate(array $data): ?string
 // Hlavná logika
 // --------------------------------------------------------------------------
 
+// Fetching window - when actual minute is between 0 - 10 minute, fetch is allowed. Otherwise redirect
+// to previously created static json data file.
+
+$mins = date('i');
+if ( $mins >= 10 and $min <= 29 ) 
+	{
+			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
+			exit();
+	}
+if ( $mins >= 30 and $min <= 49 ) 
+	{
+			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
+			exit();
+	}
+
 header('Content-Type: application/json; charset=utf-8');
 
 try {
@@ -222,6 +237,7 @@ try {
 
     // 6. Pridáme meta-informácie
     $output = [
+		'internalid' => $mins,
         'created'   => "When is Keynote : TRMNL JSON data",
         'success'   => true,
         'source'    => $jsUrl,
