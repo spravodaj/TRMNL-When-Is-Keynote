@@ -11,4 +11,4 @@ polling_headers: ''
 polling_body: ''
 id: 282385
 name: When is the next Apple keynote? [private]
-refresh_interval: 1440
+refresh_interval: 15
