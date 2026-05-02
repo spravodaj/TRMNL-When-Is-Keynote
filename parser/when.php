@@ -6,7 +6,7 @@
  *
  * Použitie:  php apple_keynote.php
  *            alebo ako HTTP endpoint (napr. cez Apache/Nginx)
- * v2.0
+ * v2.0 planner
  */
 
 declare(strict_types=1);
