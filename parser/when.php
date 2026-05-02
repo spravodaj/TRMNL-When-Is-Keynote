@@ -6,6 +6,7 @@
  *
  * Použitie:  php apple_keynote.php
  *            alebo ako HTTP endpoint (napr. cez Apache/Nginx)
+ * v2.0
  */
 
 declare(strict_types=1);
@@ -198,29 +199,46 @@ function buildIsoDate(array $data): ?string
 // to previously created static json data file.
 
 $mins = date('i');
-if ( $mins >= 10 and $min <= 29 ) 
+if ( $mins >= 10 and $mins <= 19 ) 
 	{
-			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
-			exit();
+//			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
+//			exit();
 	}
-if ( $mins >= 30 and $min <= 49 ) 
+if ( $mins >= 40 and $mins <= 49 ) 
 	{
-			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
-			exit();
+//			header("Location: https://www.madaj.net/system/wak/static/wak.json?data-was-refreshed-once-a-day");
+//			exit();
 	}
+
 
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    // 1. Stiahneme HTML stránku
-    $html = fetchUrl(BASE_URL);
 
-    // 2. Nájdeme URL JS súboru (buď z HTML, alebo použijeme known path)
-    $jsUrl = findJsUrl($html) ?? (BASE_URL . JS_FILE_PATH);
+	$mins = date('i'); // zistíme aktuálnu minútu
+    $type = 'When is Keynote : TRMNL JSON data stored';
+	if ( $mins >= 10 and $mins <= 19 ) 
+		{
+		    $type = 'When is Keynote : TRMNL JSON data parsed';
+			// 1. Stiahneme HTML stránku
+			$html = fetchUrl(BASE_URL);
 
-    // 3. Stiahneme JS súbor
-    $jsCode = fetchUrl($jsUrl);
-//	echo $jsCode;
+			// 2. Nájdeme URL JS súboru (buď z HTML, alebo použijeme known path)
+			$jsUrl = findJsUrl($html) ?? (BASE_URL . JS_FILE_PATH);
+
+			// 3. Stiahneme JS súbor
+			$jsCode = fetchUrl($jsUrl);
+			//	echo $jsCode;
+			$myfile = fopen("./static/wak.js", "w") or die("Unable to open file!");
+			fwrite($myfile, $jsCode );
+			fclose($myfile);
+		} else 
+		{
+		    $type = 'When is Keynote : TRMNL JSON data stored';
+		    $jsUrl = 'https://www.madaj.net/system/wak/static/wak.js';
+			$jsCode = fetchUrl($jsUrl);
+		}
+
 	
     // 4. Vyparsujeme dáta
     $keynoteData = parseKeynoteData($jsCode);
@@ -237,13 +255,16 @@ try {
 
     // 6. Pridáme meta-informácie
     $output = [
-		'internalid' => $mins,
-        'created'   => "When is Keynote : TRMNL JSON data",
+        'internal'   => $mins,
+        'created'   => $type,
         'success'   => true,
         'source'    => $jsUrl,
         'fetched_at' => date('c'),   // aktuálny čas v ISO 8601
         'keynote'   => $keynoteData,
     ];
+	$myfile = fopen("./static/wak.json", "w") or die("Unable to open file!");
+	fwrite($myfile, json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) );
+	fclose($myfile);
 
     echo json_encode($output, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
@@ -253,4 +274,6 @@ try {
         'success' => false,
         'error'   => $e->getMessage(),
     ], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+	
+	
 }
