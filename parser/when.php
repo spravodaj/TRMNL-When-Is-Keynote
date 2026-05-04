@@ -6,7 +6,7 @@
  *
  * Použitie:  php apple_keynote.php
  *            alebo ako HTTP endpoint (napr. cez Apache/Nginx)
- * v2.0 planner
+ * v2.0
  */
 
 declare(strict_types=1);
@@ -120,6 +120,9 @@ function parseKeynoteData(string $jsCode): array
       $data['formatdate'] = "{$msd[1]}.&thinsp;{$msm[1]}.&thinsp;{$msy[1]}";
       $data['formathour'] = "{$msh[1]}<sup>{$mst[1]}</sup>";
 	  $data['internationaldate'] = "{$msy[1]}-{$msm[1]}-{$msd[1]}T{$msh[1]}:{$mst[1]}:00-05:00";
+      $data['fetched_at'] = date('c');
+      $type = 'When is Keynote : TRMNL JSON';
+      $data['created'] = $type;
 	  
 	
     if (!preg_match_all($pattern, $jsCode, $matches, PREG_SET_ORDER)) {
@@ -255,11 +258,7 @@ try {
 
     // 6. Pridáme meta-informácie
     $output = [
-        'internal'   => $mins,
         'created'   => $type,
-        'success'   => true,
-        'source'    => $jsUrl,
-        'fetched_at' => date('c'),   // aktuálny čas v ISO 8601
         'keynote'   => $keynoteData,
     ];
 	$myfile = fopen("./static/wak.json", "w") or die("Unable to open file!");
