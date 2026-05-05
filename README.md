@@ -6,11 +6,8 @@
 <img src="https://github.com/spravodaj/TRMNL-When-Is-Keynote/blob/main/screenshot.png" />
 <h4>JSON file format</h4>
 <code>
-  {
-    "created": "When is Keynote : TRMNL JSON data",
-    "success": true,
-    "source": "http://wheniskeynote.com/js/addNewEvent.js",
-    "fetched_at": "2026-04-28T13:06:35+02:00",
+{
+    "created": "When is Keynote : TRMNL JSON data stored",
     "keynote": {
         "timezone": "'EST'",
         "year": "2026",
@@ -23,7 +20,9 @@
         "formatdate": "08.&thinsp;06.&thinsp;2026",
         "formathour": "09<sup>00</sup>",
         "internationaldate": "2026-06-08T09:00:00-05:00",
+        "fetched_at": "2026-05-05T08:34:41+02:00",
+        "created": "When is Keynote : TRMNL JSON",
         "event_name": "WWDC26"
     }
 }
-</code>
+  </code>
